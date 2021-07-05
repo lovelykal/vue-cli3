@@ -11,6 +11,26 @@ const routes = [
     component: Home
   },
   {
+    path: '/myinput',
+    name: 'myinput',
+    component: () => import('@/components/my-input.vue')
+  },
+  {
+    path: '/myradio',
+    name: 'myradio',
+    component: () => import('@/components/my-radio.vue')
+  },
+  {
+    path: '/myswiper',
+    name: 'myswiper',
+    component: () => import('@/components/my-swiper/my-swiper')
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -21,9 +41,17 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
+})
+
+// console.log(router.beforeEach)
+
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  console.log(from)
+  next()
 })
 
 export default router
